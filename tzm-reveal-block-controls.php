@@ -144,6 +144,12 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
             }
             $styles = implode(';', $styles);
 
+
+            /** 
+             * Modify the block's HTML via regular expressions until WP_HTML_Tag_Processor is available in core.
+             * Learn more here: https://github.com/WordPress/gutenberg/pull/42485
+             */
+
             // Replace classes
             if ($classes) {
                 // ...if there is no class attribute
