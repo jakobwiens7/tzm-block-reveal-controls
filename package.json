@@ -1,13 +1,13 @@
 {
 	"name": "tzm-reveal-block-controls",
-	"version": "0.9.0",
+	"version": "0.5.0",
 	"description": "Reveal your blocks with nice animations when they enter the viewport.",
 	"author": "TezmoMedia - Jakob Wiens",
 	"license": "GPL-2.0-or-later",
 	"main": "dist/responsive-block-controls.js",
 	"scripts": {
-		"start": "wp-scripts start src/tzm-reveal-block-controls.js --output-path=dist",
-		"build": "wp-scripts build src/tzm-reveal-block-controls.js --output-path=dist",
+		"start": "wp-scripts start src/tzm-reveal-block-controls.js src/tzm-reveal-block-controls-frontend.js --output-path=dist",
+		"build": "wp-scripts build src/tzm-reveal-block-controls.js src/tzm-reveal-block-controls-frontend.js --output-path=dist",
 		"format": "wp-scripts format",
 		"format:src": "wp-scripts format ./src",
 		"lint:css": "wp-scripts lint-style",

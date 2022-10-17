@@ -3,7 +3,7 @@
 /**
  * Plugin Name:		TZM Reveal Block Controls
  * Description:		Reveal your blocks with nice animations when they enter the viewport.
- * Version:			0.0.1
+ * Version:			0.5.0
  * Author:			TezmoMedia - Jakob Wiens
  * Author URI:		https://www.tezmo.media
  * License:			GPL-2.0-or-later
@@ -99,25 +99,24 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
          */
         public function enqueue_block_assets()
         {
-            // Apply Filter to allow or prevent CSS output
-            if (!apply_filters('tzm_reveal_block_controls_output_css', true)) return;
-
-
-            // Enqueue the breakpoint styles
-            $frontend_assets = include(plugin_dir_path(__FILE__) . 'dist/tzm-reveal-block-controls.asset.php');
+            $frontend_assets = include(plugin_dir_path(__FILE__) . 'dist/tzm-reveal-block-controls-frontend.asset.php');
 
             wp_enqueue_style(
                 'tzm-reveal-block-controls',
                 plugins_url('/dist/style-tzm-reveal-block-controls.css', __FILE__),
-                is_admin() ? array('wp-editor') : array(),
-                $frontend_assets['version'],
-            );
-            wp_enqueue_script(
-                'tzm-reveal-block-controls-editor',
-                plugins_url('/dist/tzm-reveal-block-controls-frontend.js', __FILE__),
-                $frontend_assets['dependencies'],
+                is_admin() ? array('wp-editor') : $frontend_assets['dependencies'],
                 $frontend_assets['version']
             );
+
+            if (!is_admin()) {
+                wp_enqueue_script(
+                    'tzm-reveal-block-controls',
+                    plugins_url('/dist/tzm-reveal-block-controls-frontend.js', __FILE__),
+                    $frontend_assets['dependencies'],
+                    $frontend_assets['version'],
+                    true
+                );
+            }
         }
 
         /**
@@ -125,22 +124,34 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
          */
         public function render_block($block_content, $block)
         {
-            if (!isset($block['attrs']['revealControls']) || !$block['attrs']['revealControls']) {
+            if (!isset($block['attrs']['revealBlock']) || !$block['attrs']['revealBlock'] || !$block['attrs']['revealBlock']['enabled']) {
                 return $block_content;
             }
 
-            $reveal_controls = $block['attrs']['revealControls'];
+            $reveal_controls = $block['attrs']['revealBlock'];
             $classes = [];
             $styles = [];
 
-
             // Collect classes
             foreach ($reveal_controls as $option => $value) {
+                if ($option !== 'enabled') {
+                    if ($option === 'revealOnce' && $value) {
+                        $classes[] = 'tzm-reveal-once';
+                    } elseif ($option === 'delay' && $value) {
+                        $classes[] = 'tzm-reveal-delay-' . $value;
+                    } else {
+                        $classes[] = 'tzm-reveal-' . $value;
+                    }
+                }
             }
+            // If no options are set add default class 'tzm-reveal'
+            if (empty($classes)) $classes[] = 'tzm-reveal';
+
             $classes = implode(' ', $classes);
 
             // Collect styles
             foreach ($reveal_controls as $option => $value) {
+                //if ($option === 'easing' ) $classes[] = 'tzm--reveal--easing:' . $value;
             }
             $styles = implode(';', $styles);
 
@@ -206,7 +217,7 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
                 );
             }
 
-            return $block_content;
+            return /*'<pre>' . print_r($reveal_controls, true) . '</pre>' .*/ $block_content;
         }
     }
 
