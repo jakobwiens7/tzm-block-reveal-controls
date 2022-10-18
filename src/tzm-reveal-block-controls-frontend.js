@@ -22,9 +22,7 @@ tzmRevealBlockControls = {
                 item.classList.add("visible");
             });
         }
-
-        console.log( els );
-        
+        //console.log( els );
     },
 
     els: document.querySelectorAll('[class*="tzm-reveal"]'),
@@ -36,14 +34,14 @@ tzmRevealBlockControls = {
             // Element is in viewport
             if ( entry.isIntersecting ) {
                 item.classList.add("visible");
-            
+
                 // Remove IO from items with 'reveal-once'
-                if ( item.classList.contains('tzm-reveal-once') ) {
+                if (item.classList.contains('tzm-reveal-once')) {
                     io.unobserve(item);
                 }
             }
             // Element is not in viewport
-            else if ( !item.classList.contains('tzm-reveal-once') ) {
+            else if (!item.classList.contains('tzm-reveal-once')) {
                 item.classList.remove("visible");
             }
         });

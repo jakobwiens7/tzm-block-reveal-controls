@@ -1,80 +1,110 @@
 [class*="tzm-reveal"] {
-    --tzm--reveal--distance: 100px;
-    --tzm--reveal--duration: 1s;
+    --tzm--reveal--animation: none;
+    --tzm--reveal--duration: 500ms;
+    --tzm--reveal--easing: ease;
     --tzm--reveal--delay: 0ms;
+    --tzm--reveal--distance: 100px;
 
     opacity: 0;
     visibility: hidden;
-    transition: all 0;
+    transition: all 0s;
 }
 
 /**
- * Effects
+ * Effects / Animations
  */
 .tzm-reveal-slide-up {
-    transform: translateY(var(--tzm--reveal--distance));
+    --tzm--reveal--animation: revealSlideUp;
 }
 .tzm-reveal-slide-down {
-    transform: translateY(calc(-1 * var(--tzm--reveal--distance)));
+    --tzm--reveal--animation: revealSlideDown;
 }
 .tzm-reveal-slide-left {
-    transform: translateX(var(--tzm--reveal--distance));
+    --tzm--reveal--animation: revealSlideLeft;
 }
 .tzm-reveal-slide-right {
-    transform: translateX(calc(-1 * var(--tzm--reveal--distance)));
+    --tzm--reveal--animation: revealSlideRight;
 }
 
 .tzm-reveal-zoom-in {
-    transform: scale(0);
+    --tzm--reveal--animation: revealZoomIn;
 }
 .tzm-reveal-zoom-out {
-    transform: scale(2);
+    --tzm--reveal--animation: revealZoomOut;
 }
 
 .tzm-reveal-rotate {
-    transform: rotateX(90deg);
+    *:has(> &) {
+        perspective: 1000px;
+    }
+
+    --tzm--reveal--animation: revealRotate;
+}
+
+/**
+ * Easing functions
+ */
+.tzm-reveal-linear {
+    --tzm--reveal--easing: linear;
+}
+.tzm-reveal-sine {
+    --tzm--reveal--easing: cubic-bezier(0.37, 0, 0.63, 1);
+}
+.tzm-reveal-cubic {
+    --tzm--reveal--easing: cubic-bezier(0.65, 0, 0.35, 1);
+}
+.tzm-reveal-quint {
+    --tzm--reveal--easing: cubic-bezier(0.83, 0, 0.17, 1);
+}
+.tzm-reveal-back {
+    --tzm--reveal--easing: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .visible[class*="tzm-reveal"] {
     opacity: 1;
     visibility: visible;
-    transform: none;
-    transition: opacity var(--tzm--reveal--duration) var(--tzm--reveal--delay),
-        transform var(--tzm--reveal--duration) var(--tzm--reveal--delay);
+    transition: opacity var(--tzm--reveal--duration) var(--tzm--reveal--delay);
+    animation-name: var(--tzm--reveal--animation);
+    animation-duration: var(--tzm--reveal--duration);
+    animation-timing-function: var(--tzm--reveal--easing);
+    animation-delay: var(--tzm--reveal--delay);
 }
 
 /**
  * Animations
  */
-@keyframes slideInFromTop {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(0);
+@keyframes revealSlideUp {
+    from {
+        translate: 0 var(--tzm--reveal--distance);
     }
 }
-@keyframes slideInFromRight {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(0);
+@keyframes revealSlideDown {
+    from {
+        translate: 0 calc(-1 * var(--tzm--reveal--distance));
     }
 }
-@keyframes slideInFromBottom {
-    0% {
-        transform: translateY(100%);
-    }
-    100% {
-        transform: translateY(0);
+@keyframes revealSlideLeft {
+    from {
+        translate: var(--tzm--reveal--distance) 0;
     }
 }
-@keyframes slideInFromLeft {
-    0% {
-        transform: translateX(-100%);
+@keyframes revealSlideRight {
+    from {
+        translate: calc(-1 * var(--tzm--reveal--distance)) 0;
     }
-    100% {
-        transform: translateX(0);
+}
+@keyframes revealZoomIn {
+    from {
+        scale: 0;
+    }
+}
+@keyframes revealZoomOut {
+    from {
+        scale: 2;
+    }
+}
+@keyframes revealRotate {
+    from {
+        rotate: x 100deg;
     }
 }

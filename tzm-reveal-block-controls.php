@@ -3,7 +3,7 @@
 /**
  * Plugin Name:		TZM Reveal Block Controls
  * Description:		Reveal your blocks with nice animations when they enter the viewport.
- * Version:			0.5.0
+ * Version:			0.5.1
  * Author:			TezmoMedia - Jakob Wiens
  * Author URI:		https://www.tezmo.media
  * License:			GPL-2.0-or-later
@@ -135,12 +135,12 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
             // Collect classes
             foreach ($reveal_controls as $option => $value) {
                 if ($option !== 'enabled') {
-                    if ($option === 'revealOnce' && $value) {
-                        $classes[] = 'tzm-reveal-once';
-                    } elseif ($option === 'delay' && $value) {
-                        $classes[] = 'tzm-reveal-delay-' . $value;
-                    } else {
+                    if ($option === 'effect' && $value) {
                         $classes[] = 'tzm-reveal-' . $value;
+                    } else if ($option === 'easing' && $value) {
+                        $classes[] = 'tzm-reveal-' . $value;
+                    } else if ($option === 'revealOnce' && $value) {
+                        $classes[] = 'tzm-reveal-once';
                     }
                 }
             }
@@ -151,7 +151,13 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
 
             // Collect styles
             foreach ($reveal_controls as $option => $value) {
-                //if ($option === 'easing' ) $classes[] = 'tzm--reveal--easing:' . $value;
+                if ($option !== 'enabled') {
+                    if ($option === 'duration' && $value) {
+                        $styles[] = '--tzm--reveal--duration:' . $value . 'ms';
+                    } elseif ($option === 'delay' && $value) {
+                        $styles[] = '--tzm--reveal--delay:' . $value . 'ms';
+                    }
+                }
             }
             $styles = implode(';', $styles);
 
