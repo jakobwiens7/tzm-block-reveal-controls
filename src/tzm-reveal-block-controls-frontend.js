@@ -15,14 +15,14 @@ tzmRevealBlockControls = {
             els.forEach(item => {
                 io.observe( item );
             });
-        
+
         // If IntersectionObserver not supported
         } else if ( els ) {
+            console.warn('Your browser does not support IntersectionObserver.');
             els.forEach(item => {
                 item.classList.add("visible");
             });
         }
-        //console.log( els );
     },
 
     els: document.querySelectorAll('[class*="tzm-reveal"]'),
@@ -47,6 +47,4 @@ tzmRevealBlockControls = {
         });
     },
 };
-
-//document.addEventListener( 'DOMContentLoaded', tzmRevealBlockControls.init, false );
 tzmRevealBlockControls.init();

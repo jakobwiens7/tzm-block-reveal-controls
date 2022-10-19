@@ -76,7 +76,6 @@ const withRevealControls = createHigherOrderComponent( (BlockEdit) => {
 	return (props) => {
 
 		const {
-			//name,
 			attributes,
 			setAttributes
 		} = props;
@@ -87,12 +86,11 @@ const withRevealControls = createHigherOrderComponent( (BlockEdit) => {
 
 		const defaultRevealBlock = {
 			enabled: false,
-			effect: 'fade',	// [fade, slide-up, slide-down, slide-left, slide-right, zoom-in, zoom-out, rotate, overlay?, custom?]
-			//distance: '100px',
+			effect: 'fade',
 			revealOnce: false,
 			delay: 0,
 			duration: 500,
-			easing: 'default' // [default, linear, sine, cubic, quint, back]
+			easing: 'default'
 		};
 
 		function isRevealBlockEmpty(newRevealBlock = revealBlock) {
@@ -117,7 +115,7 @@ const withRevealControls = createHigherOrderComponent( (BlockEdit) => {
 			if ( isRevealBlockEmpty(newRevealBlock) ) {
 				setAttributes({	revealBlock: null });
 			}
-			// Then set the attribute
+			// Otherwise set the updated attribute
 			else {
 				setAttributes({	revealBlock: newRevealBlock });
 			}
@@ -163,31 +161,9 @@ const withRevealControls = createHigherOrderComponent( (BlockEdit) => {
 							<PanelRow>
 								<ToggleControl
 									label={ __('Reveal once only', "tzm-reveal-block-controls") }
-									help={ __('Enable this option to keep the block permanently visible after leaving the viewport.', "tzm-reveal-block-controls") }
+									help={ __("Enable this option to keep the block permanently visible when it's out of view again.", "tzm-reveal-block-controls") }
 									checked={ !!revealBlock?.revealOnce || defaultRevealBlock.revealOnce }
 									onChange={ (newVal) => setOption('revealOnce', newVal) }
-								/>
-							</PanelRow>
-							<PanelRow>
-								<RangeControl
-									label={ __('Reveal duration (in ms)', "tzm-reveal-block-controls") }
-									value={ revealBlock?.duration || defaultRevealBlock.duration }
-									onChange={ (newVal) => setOption('duration', newVal) }
-									step={ 100 }
-									min={ 100 }
-									max={ 1500 }
-									marks={[ {value: 500} ]}
-								/>
-							</PanelRow>
-							<PanelRow>
-								<RangeControl
-									label={ __('Reveal delay (in ms)', "tzm-reveal-block-controls") }
-									value={ revealBlock?.delay || defaultRevealBlock.delay }
-									onChange={ (newVal) => setOption('delay', newVal) }
-									step={ 100 }
-									min={ 0 }
-									max={ 1000 }
-									marks={[ {value: 0} ]}
 								/>
 							</PanelRow>
 							<PanelRow>
@@ -206,6 +182,40 @@ const withRevealControls = createHigherOrderComponent( (BlockEdit) => {
 									__nextHasNoMarginBottom
 								/>
 							</PanelRow>
+							<PanelRow>
+								<RangeControl
+									label={ __('Reveal duration (in ms)', "tzm-reveal-block-controls") }
+									value={ revealBlock?.duration || defaultRevealBlock.duration }
+									onChange={ (newVal) => setOption('duration', newVal) }
+									step={ 200 }
+									min={ 100 }
+									max={ 1700 }
+									marks={[
+										{value: 100},
+										{value: 500},
+										{value: 900},
+										{value: 1300},
+										{value: 1700}
+									]}
+								/>
+							</PanelRow>
+							<PanelRow>
+								<RangeControl
+									label={ __('Reveal delay (in ms)', "tzm-reveal-block-controls") }
+									value={ revealBlock?.delay || defaultRevealBlock.delay }
+									onChange={ (newVal) => setOption('delay', newVal) }
+									step={ 150 }
+									min={ 0 }
+									max={ 1200 }
+									marks={[ 
+										{value: 0},
+										{value: 300},
+										{value: 600},
+										{value: 900},
+										{value: 1200}
+									]}
+								/>
+							</PanelRow>
 						</>
 						) }
 
@@ -220,7 +230,7 @@ const withRevealControls = createHigherOrderComponent( (BlockEdit) => {
 /**
  * Add reveal classes to the block in the editor
  */
-const addRevealClassesEditor = createHigherOrderComponent( (BlockListBlock) => {
+/*const addRevealClassesEditor = createHigherOrderComponent( (BlockListBlock) => {
 	return (props) => {
 		
 		const {
@@ -285,35 +295,7 @@ const addRevealClassesEditor = createHigherOrderComponent( (BlockListBlock) => {
 		);
 	};
 }, 'addRevealClassesEditor' );
-
-
-/**
- * Add custom element class in save element.
- *
- * @param {Object} props     	Block element.
- * @param {Object} block      	Blocks object.
- * @param {Object} attributes	Blocks attributes.
- *
- * @return {Object} extraProps Modified block element.
- */
-/*function addResponsiveClasses( props, block, attributes ) {
-
-	const { 
-		className,
- 	} = props;
-	
-	const {
-		revealBlock
-	} = attributes;
-	
-	return assign( {}, props, {
-		className: classnames( 
-			className, 'tzm-reveal-test', {
-				[`tzm-reveal-${revealBlock?.id}`]: revealBlock && revealBlock.id
-			}
-		)
-	} );
-}*/
+*/
 
 addFilter(
 	'blocks.registerBlockType',
@@ -327,14 +309,8 @@ addFilter(
 	withRevealControls
 );
 
-addFilter(
+/*addFilter(
    'editor.BlockListBlock',
    'tzm/reveal-classes-editor',
    addRevealClassesEditor
-);
-
-/*addFilter(
-	'blocks.getSaveContent.extraProps',
-	'tzm/reveal-classes-frontend',
-	addRevealClasses
 );*/

@@ -2,8 +2,8 @@
 
 /**
  * Plugin Name:		TZM Reveal Block Controls
- * Description:		Reveal your blocks with nice animations when they enter the viewport.
- * Version:			0.5.1
+ * Description:		Reveal your blocks with nice animations when they come into view.
+ * Version:			0.5.2
  * Author:			TezmoMedia - Jakob Wiens
  * Author URI:		https://www.tezmo.media
  * License:			GPL-2.0-or-later
@@ -45,11 +45,14 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
             // Render block
             add_filter('render_block', array($this, 'render_block'), 10, 2);
 
-            // Enqueue block editor assets
+            // Enqueue editor assets
             add_action('enqueue_block_editor_assets', array($this, 'enqueue_editor_assets'));
 
-            // Enqueue both frontend + editor block assets.
-            add_action('enqueue_block_assets', array($this, 'enqueue_block_assets'));
+            // Enqueue frontend assets.
+            add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend_assets'));
+
+            // Enqueue both frontend + editor assets.
+            //add_action('enqueue_block_assets', array($this, 'enqueue_block_assets'));
         }
 
         /**
@@ -65,7 +68,7 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
         }
 
         /**
-         * Enqueue block editor assets
+         * Enqueue editor assets
          */
         public function enqueue_editor_assets()
         {
@@ -95,9 +98,9 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
         }
 
         /**
-         * Enqueue both frontend + editor block assets.
+         * Enqueue frontend assets.
          */
-        public function enqueue_block_assets()
+        public function enqueue_frontend_assets()
         {
             $frontend_assets = include(plugin_dir_path(__FILE__) . 'dist/tzm-reveal-block-controls-frontend.asset.php');
 
@@ -108,16 +111,22 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
                 $frontend_assets['version']
             );
 
-            if (!is_admin()) {
-                wp_enqueue_script(
-                    'tzm-reveal-block-controls',
-                    plugins_url('/dist/tzm-reveal-block-controls-frontend.js', __FILE__),
-                    $frontend_assets['dependencies'],
-                    $frontend_assets['version'],
-                    true
-                );
-            }
+            wp_enqueue_script(
+                'tzm-reveal-block-controls',
+                plugins_url('/dist/tzm-reveal-block-controls-frontend.js', __FILE__),
+                $frontend_assets['dependencies'],
+                $frontend_assets['version'],
+                true
+            );
         }
+
+        /**
+         * Enqueue both frontend + editor assets.
+         */
+        public function enqueue_block_assets()
+        {
+        }
+
 
         /**
          * Render block
@@ -223,7 +232,7 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
                 );
             }
 
-            return /*'<pre>' . print_r($reveal_controls, true) . '</pre>' .*/ $block_content;
+            return $block_content;
         }
     }
 

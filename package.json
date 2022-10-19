@@ -1,7 +1,7 @@
 {
 	"name": "tzm-reveal-block-controls",
-	"version": "0.5.1",
-	"description": "Reveal your blocks with nice animations when they enter the viewport.",
+	"version": "0.5.2",
+	"description": "Reveal your blocks with nice animations when they come into view.",
 	"author": "TezmoMedia - Jakob Wiens",
 	"license": "GPL-2.0-or-later",
 	"main": "dist/responsive-block-controls.js",
