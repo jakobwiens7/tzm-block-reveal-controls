@@ -1,0 +1,141 @@
+# Copyright (C) 2022 TezmoMedia - Jakob Wiens
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: TZM Reveal Block Controls 0.5.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tzm-reveal-block-"
+"controls\n"
+"Last-Translator: \n"
+"Language-Team: Deutsch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-10-20T09:29:42+00:00\n"
+"PO-Revision-Date: 2022-10-20 09:30+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: tzm-reveal-block-controls\n"
+"\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.6.2; wp-6.0.3"
+
+#. Plugin Name of the plugin
+msgid "TZM Reveal Block Controls"
+msgstr ""
+
+#. Description of the plugin
+msgid "Reveal your blocks with nice animations when they come into view."
+msgstr ""
+
+#. Author of the plugin
+msgid "TezmoMedia - Jakob Wiens"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.tezmo.media"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:137 src/tzm-reveal-block-controls.js:130
+#: dist/tzm-reveal-block-controls.js:130
+msgid "Reveal on scroll"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:145 src/tzm-reveal-block-controls.js:145
+msgid "Reveal Effect"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:148 src/tzm-reveal-block-controls.js:148
+msgid "Fade"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:151 src/tzm-reveal-block-controls.js:149
+#: dist/tzm-reveal-block-controls.js:149
+msgid "Slide up"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:154 src/tzm-reveal-block-controls.js:150
+#: dist/tzm-reveal-block-controls.js:150
+msgid "Slide down"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:157 src/tzm-reveal-block-controls.js:151
+#: dist/tzm-reveal-block-controls.js:151
+msgid "Slide left"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:160 src/tzm-reveal-block-controls.js:152
+#: dist/tzm-reveal-block-controls.js:152
+msgid "Slide right"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:163 src/tzm-reveal-block-controls.js:153
+#: dist/tzm-reveal-block-controls.js:153
+msgid "Rotate"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:166 src/tzm-reveal-block-controls.js:154
+#: dist/tzm-reveal-block-controls.js:154
+msgid "Zoom in"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:169 src/tzm-reveal-block-controls.js:155
+#: dist/tzm-reveal-block-controls.js:155
+msgid "Zoom out"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:175 src/tzm-reveal-block-controls.js:163
+#: dist/tzm-reveal-block-controls.js:163
+msgid "Reveal once only"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:176 src/tzm-reveal-block-controls.js:164
+#: dist/tzm-reveal-block-controls.js:164
+msgid ""
+"Enable this option to keep the block permanently visible when it's out of "
+"view again."
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:180 src/tzm-reveal-block-controls.js:171
+#: dist/tzm-reveal-block-controls.js:171
+msgid "Animation easing"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:183 src/tzm-reveal-block-controls.js:174
+#: dist/tzm-reveal-block-controls.js:174
+msgid "Default"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:186 src/tzm-reveal-block-controls.js:175
+#: dist/tzm-reveal-block-controls.js:175
+msgid "Linear"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:189 src/tzm-reveal-block-controls.js:176
+#: dist/tzm-reveal-block-controls.js:176
+msgid "Sine"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:192 src/tzm-reveal-block-controls.js:177
+#: dist/tzm-reveal-block-controls.js:177
+msgid "Cubic"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:195 src/tzm-reveal-block-controls.js:178
+#: dist/tzm-reveal-block-controls.js:178
+msgid "Quint"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:198 src/tzm-reveal-block-controls.js:179
+#: dist/tzm-reveal-block-controls.js:179
+msgid "Back"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:204 src/tzm-reveal-block-controls.js:187
+#: dist/tzm-reveal-block-controls.js:187
+msgid "Reveal duration (in ms)"
+msgstr ""
+
+#: dist/tzm-reveal-block-controls.js:222 src/tzm-reveal-block-controls.js:204
+#: dist/tzm-reveal-block-controls.js:204
+msgid "Reveal delay (in ms)"
+msgstr ""

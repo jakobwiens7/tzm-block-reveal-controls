@@ -3,7 +3,7 @@
 /**
  * Plugin Name:		TZM Reveal Block Controls
  * Description:		Reveal your blocks with nice animations when they come into view.
- * Version:			0.5.2
+ * Version:			0.8.0
  * Author:			TezmoMedia - Jakob Wiens
  * Author URI:		https://www.tezmo.media
  * License:			GPL-2.0-or-later
@@ -125,6 +125,22 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
          */
         public function enqueue_block_assets()
         {
+            $frontend_assets = include(plugin_dir_path(__FILE__) . 'dist/tzm-reveal-block-controls-frontend.asset.php');
+
+            wp_enqueue_style(
+                'tzm-reveal-block-controls',
+                plugins_url('/dist/style-tzm-reveal-block-controls.css', __FILE__),
+                is_admin() ? array('wp-editor') : $frontend_assets['dependencies'],
+                $frontend_assets['version']
+            );
+
+            wp_enqueue_script(
+                'tzm-reveal-block-controls',
+                plugins_url('/dist/tzm-reveal-block-controls-frontend.js', __FILE__),
+                $frontend_assets['dependencies'],
+                $frontend_assets['version'],
+                true
+            );
         }
 
 

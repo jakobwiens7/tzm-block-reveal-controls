@@ -1,6 +1,6 @@
 {
 	"name": "tzm-reveal-block-controls",
-	"version": "0.5.2",
+	"version": "0.8.0",
 	"description": "Reveal your blocks with nice animations when they come into view.",
 	"author": "TezmoMedia - Jakob Wiens",
 	"license": "GPL-2.0-or-later",

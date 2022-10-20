@@ -133,7 +133,7 @@ const withRevealControls = createHigherOrderComponent( (BlockEdit) => {
 					>
 						<PanelRow>
 							<ToggleControl
-								label={ revealBlock?.enabled ? __('Enabled') : __('Disabled') }
+								label={ revealBlock?.enabled ? __('Enabled', "tzm-reveal-block-controls") : __('Disabled', "tzm-reveal-block-controls") }
 								checked={ revealBlock?.enabled }
 								onChange={ (newVal) => setOption('enabled', newVal) }
 							/>

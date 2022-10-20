@@ -47,4 +47,5 @@ tzmRevealBlockControls = {
         });
     },
 };
+
 tzmRevealBlockControls.init();
