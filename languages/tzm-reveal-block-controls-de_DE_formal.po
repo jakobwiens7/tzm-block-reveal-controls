@@ -5,18 +5,18 @@ msgstr ""
 "Project-Id-Version: TZM Reveal Block Controls 0.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tzm-reveal-block-"
 "controls\n"
-"Last-Translator: \n"
+"Last-Translator: admin\n"
 "Language-Team: Deutsch (Sie)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2022-10-20T09:29:42+00:00\n"
-"PO-Revision-Date: 2022-10-20 09:54+0000\n"
+"PO-Revision-Date: 2025-01-27 18:48+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: tzm-reveal-block-controls\n"
 "Language: de_DE_formal\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Loco-Version: 2.6.2; wp-6.0.3"
+"X-Loco-Version: 2.7.1; wp-6.7.1"
 
 #: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:171
 #: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
@@ -28,13 +28,13 @@ msgstr "Animationskurve"
 #: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
 #: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:179
 msgid "Back"
-msgstr ""
+msgstr "Rückstoß"
 
 #: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:177
 #: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
 #: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:177
 msgid "Cubic"
-msgstr ""
+msgstr "Kubisch"
 
 #: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:174
 #: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
@@ -74,13 +74,13 @@ msgstr "https://www.tezmo.media"
 #: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
 #: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:175
 msgid "Linear"
-msgstr ""
+msgstr "Linear"
 
 #: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:178
 #: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
 #: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:178
 msgid "Quint"
-msgstr ""
+msgstr "Quint"
 
 #: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:204
 #: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
@@ -128,7 +128,7 @@ msgstr "Drehen"
 #: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
 #: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:176
 msgid "Sine"
-msgstr ""
+msgstr "Sinus"
 
 #: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:150
 #: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1

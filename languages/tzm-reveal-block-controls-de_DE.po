@@ -5,171 +5,133 @@ msgstr ""
 "Project-Id-Version: TZM Reveal Block Controls 0.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tzm-reveal-block-"
 "controls\n"
-"Last-Translator: \n"
+"Last-Translator: admin\n"
 "Language-Team: Deutsch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2022-10-20T09:29:42+00:00\n"
-"PO-Revision-Date: 2022-10-20 09:54+0000\n"
+"PO-Revision-Date: 2025-01-27 18:48+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: tzm-reveal-block-controls\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Loco-Version: 2.6.2; wp-6.0.3"
+"X-Loco-Version: 2.7.1; wp-6.7.1"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:171
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:171
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:198
 msgid "Animation easing"
 msgstr "Animationskurve"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:179
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:179
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:206
 msgid "Back"
-msgstr ""
+msgstr "Rückstoß"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:177
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:177
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:204
 msgid "Cubic"
-msgstr ""
+msgstr "Kubisch"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:174
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:174
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:201
 msgid "Default"
 msgstr "Standard"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:136
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:164
 msgid "Disabled"
 msgstr "Deaktiviert"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:164
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:164
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:191
 msgid ""
-"Enable this option to keep the block permanently visible when it's out of "
-"view again."
+"Enable this option to keep the block permanently visible when it has been "
+"revealed once."
 msgstr ""
 "Aktiviere diese Option, damit der Block dauerhaft sichtbar bleibt, wenn er "
-"das Sichtfeld wieder verlässt."
+"einmal aufgedeckt wurde."
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:136
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:164
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:148
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:148
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:176
 msgid "Fade"
 msgstr "Einblenden"
 
 #. Author URI of the plugin
+#: tzm-reveal-block-controls.php
 msgid "https://www.tezmo.media"
 msgstr "https://www.tezmo.media"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:175
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:175
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:202
 msgid "Linear"
-msgstr ""
+msgstr "Linear"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:178
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:178
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:205
 msgid "Quint"
-msgstr ""
+msgstr "Quint"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:204
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:204
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:231
 msgid "Reveal delay (in ms)"
 msgstr "Effektverzögerung (in ms)"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:187
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:187
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:213
 msgid "Reveal duration (in ms)"
 msgstr "Effektdauer (in ms)"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:145
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:145
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:173
 msgid "Reveal Effect"
 msgstr "Effekt"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:130
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:130
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:158
 msgid "Reveal on scroll"
 msgstr "Aufdecken beim scrollen"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:163
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:163
-msgid "Reveal once only"
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:190
+msgid "Reveal permanently"
 msgstr "Dauerhaft aufdecken"
 
 #. Description of the plugin
+#: tzm-reveal-block-controls.php
 msgid "Reveal your blocks with nice animations when they come into view."
 msgstr ""
 "Decke Deine Blöcke mit netten Animationen auf, sobald sie ins Sichtfeld "
 "kommen."
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:153
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:153
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:181
 msgid "Rotate"
 msgstr "Drehen"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:176
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:176
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:203
 msgid "Sine"
-msgstr ""
+msgstr "Sinus"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:150
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:150
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:178
 msgid "Slide down"
 msgstr "Nach unten gleiten"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:151
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:151
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:179
 msgid "Slide left"
 msgstr "Nach links gleiten"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:152
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:152
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:180
 msgid "Slide right"
 msgstr "Nach rechts gleiten"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:149
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:149
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:177
 msgid "Slide up"
 msgstr "Nach oben gleiten"
 
 #. Author of the plugin
+#: tzm-reveal-block-controls.php
 msgid "TezmoMedia - Jakob Wiens"
 msgstr "TezmoMedia - Jakob Wiens"
 
 #. Plugin Name of the plugin
+#: tzm-reveal-block-controls.php
 msgid "TZM Reveal Block Controls"
 msgstr "TZM Reveal Block Controls"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:154
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:154
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:182
 msgid "Zoom in"
 msgstr "Reinzoomen"
 
-#: dist/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:155
-#: tzm-reveal-block-controls/dist/tzm-reveal-block-controls.js:1
-#: tzm-reveal-block-controls/src/tzm-reveal-block-controls.js:155
+#: build/tzm-reveal-block-controls.js:1 src/tzm-reveal-block-controls.js:183
 msgid "Zoom out"
 msgstr "Rauszoomen"
