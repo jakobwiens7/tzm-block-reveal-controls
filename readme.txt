@@ -1,26 +1,35 @@
 === TZM Reveal Block Controls ===
-Contributors:      TezmoMedia - Jakob Wiens
-Tags:              block, reveal on scroll, controls
-Requires at least: 5.6.0
-Tested up to:      6.0.2
-Stable tag:        0.8.0
-Requires PHP:      7.0.0
-License:           GPL-2.0-or-later
-License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+Contributors:       jakobwiens
+Tags:               block controls, scroll, effect, fade, slide
+Tested up to:       6.7
+Stable tag:         1.0.0
+License:			GPLv2 or later
+License URI: 		https://www.gnu.org/licenses/gpl-2.0.html
 
-Reveal your blocks with nice animations when they enter the viewport.
+Make your content pop! Reveal Gutenberg blocks with smooth fade, slide, and rotate animations when they scroll into view.
 
 
 == Description ==
 
-wp i18n make-pot . languages/tzm-reveal-block-controls.pot
-wp i18n make-json languages/tzm-reveal-block-controls-de_DE.po --no-purge
-wp i18n make-json languages/tzm-reveal-block-controls-de_DE_formal.po --no-purge
+**TZM Reveal Block Controls** allows you to add eye-catching animations to blocks when they scroll into view.  
+Easily enhance user engagement by revealing content dynamically using smooth CSS-based effects.  
 
-This is the long description. No limit, and you can use Markdown (as well as in the following sections).
+=== Features ===
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+* Choose from multiple animation styles: **fade-in, slide-in, rotate, and more**
+* Customize **animation duration, delay, and persistence**
+* Works seamlessly with any **Gutenberg block**
+* No coding required – **intuitive block settings panel**
+* Lightweight and optimized for performance
+
+Perfect for **landing pages, portfolios, blogs, and interactive storytelling!**
+
+=== Source Code ===
+
+The source code for TZM Reveal Block Controls is available on GitHub! 
+Follow the development, report issues, and get involved in improving the plugin. We welcome contributions, feedback, and feature requests from the community.
+
+* [View on GitHub](https://github.com/jakobwiens7/tzm-reveal-block-controls)
 
 
 == Installation ==
@@ -32,14 +41,17 @@ Markdown parsed.
 
 == Frequently Asked Questions ==
 
-= My first question? =
+= Does this work with all Gutenberg blocks? =
+Yes! You can apply the reveal effect to **any** Gutenberg block, including core, third-party, and custom blocks.
 
-My first answer...
+= Can I control when the effect triggers? =
+Yes, you can customize the **delay, duration, and whether the block stays visible** after being revealed.
 
+= Is JavaScript required for this plugin to work? =
+Yes, the plugin uses **lightweight JavaScript (Intersection Observer API)** to trigger animations efficiently.
 
-= My second question? =
-
-My second answer...
+= Can I use this with page builders like Elementor? =
+This plugin is specifically designed for **Gutenberg** and may not work within third-party page builders.
 
 
 == Screenshots ==
@@ -53,5 +65,5 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
-= 0.0.1 =
-* Release
+= 1.0.0 =
+* Initial Release :)
