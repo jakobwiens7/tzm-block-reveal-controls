@@ -3,15 +3,14 @@
 /**
  * Plugin Name:		TZM Reveal Block Controls
  * Description:		Reveal your blocks with nice animations when they come into view.
- * Version:			0.8.0
+ * Version:			0.8.5
  * Author:			TezmoMedia - Jakob Wiens
  * Author URI:		https://www.tezmo.media
  * License:			GPL-2.0-or-later
  * License URI:		https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:		tzm-reveal-block-controls
  * Domain Path:		/languages
- *
- * @package	tzm
+ * Requires at least: 6.2
  */
 
 // Exit if accessed directly.
@@ -24,7 +23,6 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
 
     class TZM_Reveal_Block_Controls
     {
-
         // The instance of this class
         private static $instance = null;
 
@@ -40,7 +38,7 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
         public function __construct()
         {
             // Load plugin textdomain
-            add_action('plugins_loaded', array($this, 'load_textdomain'));
+            add_action('init', array($this, 'load_textdomain'));
 
             // Render block
             add_filter('render_block', array($this, 'render_block'), 10, 2);
@@ -48,11 +46,8 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
             // Enqueue editor assets
             add_action('enqueue_block_editor_assets', array($this, 'enqueue_editor_assets'));
 
-            // Enqueue frontend assets.
-            add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend_assets'));
-
-            // Enqueue both frontend + editor assets.
-            //add_action('enqueue_block_assets', array($this, 'enqueue_block_assets'));
+            // Enqueue frontend assets
+            add_action('enqueue_block_assets', array($this, 'enqueue_block_assets'));
         }
 
         /**
@@ -72,17 +67,17 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
          */
         public function enqueue_editor_assets()
         {
-            $editor_assets = include(plugin_dir_path(__FILE__) . 'dist/tzm-reveal-block-controls.asset.php');
+            $editor_assets = include(plugin_dir_path(__FILE__) . 'build/tzm-reveal-block-controls.asset.php');
 
             wp_enqueue_style(
                 'tzm-reveal-block-controls-editor',
-                plugins_url('/dist/tzm-reveal-block-controls.css', __FILE__),
+                plugins_url('/build/tzm-reveal-block-controls.css', __FILE__),
                 array('wp-editor'),
                 $editor_assets['version']
             );
             wp_enqueue_script(
                 'tzm-reveal-block-controls-editor',
-                plugins_url('/dist/tzm-reveal-block-controls.js', __FILE__),
+                plugins_url('/build/tzm-reveal-block-controls.js', __FILE__),
                 $editor_assets['dependencies'],
                 $editor_assets['version']
             );
@@ -98,47 +93,24 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
         }
 
         /**
-         * Enqueue frontend assets.
-         */
-        public function enqueue_frontend_assets()
-        {
-            $frontend_assets = include(plugin_dir_path(__FILE__) . 'dist/tzm-reveal-block-controls-frontend.asset.php');
-
-            wp_enqueue_style(
-                'tzm-reveal-block-controls',
-                plugins_url('/dist/style-tzm-reveal-block-controls.css', __FILE__),
-                is_admin() ? array('wp-editor') : $frontend_assets['dependencies'],
-                $frontend_assets['version']
-            );
-
-            wp_enqueue_script(
-                'tzm-reveal-block-controls',
-                plugins_url('/dist/tzm-reveal-block-controls-frontend.js', __FILE__),
-                $frontend_assets['dependencies'],
-                $frontend_assets['version'],
-                true
-            );
-        }
-
-        /**
          * Enqueue both frontend + editor assets.
          */
         public function enqueue_block_assets()
         {
-            $frontend_assets = include(plugin_dir_path(__FILE__) . 'dist/tzm-reveal-block-controls-frontend.asset.php');
+            $assets = include(plugin_dir_path(__FILE__) . 'build/view-tzm-reveal-block-controls.asset.php');
 
             wp_enqueue_style(
                 'tzm-reveal-block-controls',
-                plugins_url('/dist/style-tzm-reveal-block-controls.css', __FILE__),
-                is_admin() ? array('wp-editor') : $frontend_assets['dependencies'],
-                $frontend_assets['version']
+                plugins_url('/build/style-tzm-reveal-block-controls.css', __FILE__),
+                is_admin() ? array('wp-editor') : null, //$assets['dependencies'],
+                $assets['version']
             );
 
             wp_enqueue_script(
                 'tzm-reveal-block-controls',
-                plugins_url('/dist/tzm-reveal-block-controls-frontend.js', __FILE__),
-                $frontend_assets['dependencies'],
-                $frontend_assets['version'],
+                plugins_url('/build/view-tzm-reveal-block-controls.js', __FILE__),
+                is_admin() ? array('wp-editor') : $assets['dependencies'],
+                $assets['version'],
                 true
             );
         }
@@ -149,106 +121,58 @@ if (!class_exists('TZM_Reveal_Block_Controls')) {
          */
         public function render_block($block_content, $block)
         {
-            if (!isset($block['attrs']['revealBlock']) || !$block['attrs']['revealBlock'] || !$block['attrs']['revealBlock']['enabled']) {
+            if (
+                !isset($block['attrs']['revealControls']) ||
+                !$block['attrs']['revealControls'] ||
+                !isset($block['attrs']['revealControls']['enabled']) ||
+                !$block['attrs']['revealControls']['enabled']
+            ) {
                 return $block_content;
             }
 
-            $reveal_controls = $block['attrs']['revealBlock'];
+            $reveal_controls = $block['attrs']['revealControls'];
             $classes = [];
             $styles = [];
 
-            // Collect classes
             foreach ($reveal_controls as $option => $value) {
-                if ($option !== 'enabled') {
-                    if ($option === 'effect' && $value) {
-                        $classes[] = 'tzm-reveal-' . $value;
-                    } else if ($option === 'easing' && $value) {
-                        $classes[] = 'tzm-reveal-' . $value;
-                    } else if ($option === 'revealOnce' && $value) {
-                        $classes[] = 'tzm-reveal-once';
-                    }
+                switch ($option) {
+                    case 'effect':
+                        $classes[] = 'tzm-reveal__' . $value;
+                        break;
+                    case 'permanent':
+                        $classes[] = 'tzm-reveal__' . $option;
+                        break;
+                    case 'easing':
+                        $classes[] = 'tzm-reveal__ease-' . $value;
+                        break;
+                    case 'duration':
+                        $styles[] = '--tzm-reveal--duration:' . $value . 'ms';
+                        break;
+                    case 'delay':
+                        $styles[] = '--tzm-reveal--delay:' . $value . 'ms';
+                        break;
                 }
             }
+
             // If no options are set add default class 'tzm-reveal'
             if (empty($classes)) $classes[] = 'tzm-reveal';
 
             $classes = implode(' ', $classes);
-
-            // Collect styles
-            foreach ($reveal_controls as $option => $value) {
-                if ($option !== 'enabled') {
-                    if ($option === 'duration' && $value) {
-                        $styles[] = '--tzm--reveal--duration:' . $value . 'ms';
-                    } elseif ($option === 'delay' && $value) {
-                        $styles[] = '--tzm--reveal--delay:' . $value . 'ms';
-                    }
-                }
-            }
             $styles = implode(';', $styles);
 
+            $html = new WP_HTML_Tag_Processor($block_content);
+            $html->next_tag();
 
-            /** 
-             * Modify the block's HTML via regular expressions until WP_HTML_Tag_Processor is available in core.
-             * Learn more here: https://github.com/WordPress/gutenberg/pull/42485
-             */
-
-            // Replace classes
             if ($classes) {
-                // ...if there is no class attribute
-                if (!str_contains($block_content, 'class')) {
-                    $block_content = preg_replace(
-                        '/>/',
-                        ' class="">',
-                        $block_content,
-                        1
-                    );
-                }
-                // ...if class attribute is null
-                elseif (!str_contains($block_content, 'class=')) {
-                    $block_content = preg_replace(
-                        '/class/',
-                        'class=""',
-                        $block_content,
-                        1
-                    );
-                }
-                $block_content = preg_replace(
-                    '/' . preg_quote('class="', '/') . '/',
-                    'class="' . $classes . ' ',
-                    $block_content,
-                    1
-                );
+                $html->add_class($classes);
             }
 
-            // Replace styles
             if ($styles) {
-                // ...if there is no style attribute
-                if (!str_contains($block_content, ' style')) {
-                    $block_content = preg_replace(
-                        '/>/',
-                        ' style="">',
-                        $block_content,
-                        1
-                    );
-                }
-                // ...if style attribute is null
-                elseif (!str_contains($block_content, ' style=')) {
-                    $block_content = preg_replace(
-                        '/style/',
-                        'style=""',
-                        $block_content,
-                        1
-                    );
-                }
-                $block_content = preg_replace(
-                    '/' . preg_quote('style="', '/') . '/',
-                    'style="' . $styles . ';',
-                    $block_content,
-                    1
-                );
+                $html_style = $html->get_attribute('style');
+                $html->set_attribute('style', $html_style ? $html_style . '; ' . $styles : $styles);
             }
 
-            return $block_content;
+            return $html->get_updated_html();
         }
     }
 

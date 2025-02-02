@@ -1,7 +1,7 @@
 /**
  * External Dependencies
  */
-import classnames from 'classnames';
+import clsx from 'clsx';
 const { assign, merge } = lodash;
 
 /**
@@ -13,9 +13,6 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 
 import {
 	InspectorControls,	
-	//ColorPalette,
-	//__experimentalSpacingSizesControl as SpacingSizesControl,
-	//useSetting
 } from '@wordpress/block-editor';
 
 import {
@@ -26,8 +23,16 @@ import {
 	ToggleControl,
 	SelectControl,
 	RangeControl,
-	//__experimentalDivider as Divider
 } from '@wordpress/components';
+
+
+/**
+ * Internal Dependencies
+ */
+import { 
+	//hasNestedValue,
+	cleanEmptyObject
+} from './_utils';
 
 
 /**
@@ -54,7 +59,7 @@ function addRevealAttributes( settings ) {
 		
 		return assign( {}, settings, {
 			attributes: merge(settings.attributes, {
-				revealBlock: {
+				revealControls: {
 					type: 'object',
 					default: null
 				}
@@ -77,73 +82,52 @@ const withRevealControls = createHigherOrderComponent( (BlockEdit) => {
 
 		const {
 			attributes,
-			setAttributes
+			setAttributes,
 		} = props;
 		
 		const {
-			revealBlock
+			revealControls
 		} = attributes;
 
-		const defaultRevealBlock = {
+		const defaultRevealControls = {
 			enabled: false,
 			effect: 'fade',
-			revealOnce: false,
+			permanent: false,
 			delay: 0,
-			duration: 500,
+			duration: 400,
 			easing: 'default'
 		};
 
-		function isRevealBlockEmpty(newRevealBlock = revealBlock) {
-			if (newRevealBlock && typeof newRevealBlock === 'object') {
 
-				// Check every option in attribute
-				for (let option in newRevealBlock) {
-					if (newRevealBlock[option] && newRevealBlock[option] !== defaultRevealBlock[option]) {
-						return false;
-					};
-				}
-			}	
-			return true;
+		// Clean and update 'revealControls' attribute
+		function updateAttribute( updatedRevealControls = {} ) {
+			const cleanRevealControls = cleanEmptyObject(updatedRevealControls);
+			setAttributes({ revealControls: cleanRevealControls });
 		}
-
-		function setOption(option, newVal) {
-			let newRevealBlock = revealBlock || {};
-
-			newRevealBlock = { ...newRevealBlock, [option]: (newVal && newVal !== defaultRevealBlock[option] ? newVal : undefined) };
-
-			// Check if newRevealBlock is empty and reset attribute
-			if ( isRevealBlockEmpty(newRevealBlock) ) {
-				setAttributes({	revealBlock: null });
-			}
-			// Otherwise set the updated attribute
-			else {
-				setAttributes({	revealBlock: newRevealBlock });
-			}
-		}
-		
+	
 		return (
 			<>
 				<BlockEdit {...props} />
 				<InspectorControls>
 					<PanelBody
-						className={ classnames('block-editor-panel-reveal', {}) }
+						className={ clsx('block-editor-panel-reveal', {}) }
 						title={ __('Reveal on scroll', "tzm-reveal-block-controls") }
 						initialOpen={ false }
-						// WIP: Add animation preview button (into panel label?)
+						// WIP: Add animation preview button (inside panel label?)
 					>
 						<PanelRow>
-							<ToggleControl
-								label={ revealBlock?.enabled ? __('Enabled', "tzm-reveal-block-controls") : __('Disabled', "tzm-reveal-block-controls") }
-								checked={ revealBlock?.enabled }
-								onChange={ (newVal) => setOption('enabled', newVal) }
+							<ToggleControl __nextHasNoMarginBottom
+								label={ revealControls?.enabled ? __('Enabled', "tzm-reveal-block-controls") : __('Disabled', "tzm-reveal-block-controls") }
+								checked={ revealControls?.enabled }
+								onChange={ (newValue) => updateAttribute({ ...revealControls, enabled: newValue }) }
 							/>
 						</PanelRow>
-						{ !!revealBlock?.enabled && (
+						{ !! revealControls?.enabled && (
 						<>
 							<PanelRow>
-								<SelectControl
+								<SelectControl __nextHasNoMarginBottom __next40pxDefaultSize
 									label={ __('Reveal Effect', "tzm-reveal-block-controls") }
-									value={ revealBlock?.effect || defaultRevealBlock.effect }
+									value={ revealControls?.effect || defaultRevealControls.effect }
 									options={ [
 										{ label: __('Fade', "tzm-reveal-block-controls"), value: 'fade' },
 										{ label: __('Slide up', "tzm-reveal-block-controls"), value: 'slide-up' },
@@ -154,22 +138,21 @@ const withRevealControls = createHigherOrderComponent( (BlockEdit) => {
 										{ label: __('Zoom in', "tzm-reveal-block-controls"), value: 'zoom-in' },
 										{ label: __('Zoom out', "tzm-reveal-block-controls"), value: 'zoom-out' }
 									] }
-									onChange={ (newVal) => setOption('effect', newVal) }
-									__nextHasNoMarginBottom
+									onChange={ (newValue) => updateAttribute({ ...revealControls, effect: newValue }) }
 								/>
 							</PanelRow>
 							<PanelRow>
-								<ToggleControl
-									label={ __('Reveal once only', "tzm-reveal-block-controls") }
-									help={ __("Enable this option to keep the block permanently visible when it's out of view again.", "tzm-reveal-block-controls") }
-									checked={ !!revealBlock?.revealOnce || defaultRevealBlock.revealOnce }
-									onChange={ (newVal) => setOption('revealOnce', newVal) }
+								<ToggleControl __nextHasNoMarginBottom
+									label={ __('Reveal permanently', "tzm-reveal-block-controls") }
+									help={ __("Enable this option to keep the block permanently visible when it has been revealed once.", "tzm-reveal-block-controls") }
+									checked={ !! revealControls?.permanent || defaultRevealControls.permanent }
+									onChange={ (newValue) => updateAttribute({ ...revealControls, permanent: newValue }) }
 								/>
 							</PanelRow>
 							<PanelRow>
-								<SelectControl
+								<SelectControl __nextHasNoMarginBottom __next40pxDefaultSize
 									label={ __('Animation easing', "tzm-reveal-block-controls") }
-									value={ revealBlock?.easing || defaultRevealBlock.easing }
+									value={ revealControls?.easing || defaultRevealControls.easing }
 									options={ [
 										{ label: __('Default', "tzm-reveal-block-controls"), value: 'default' },
 										{ label: __('Linear', "tzm-reveal-block-controls"), value: 'linear' },
@@ -178,47 +161,52 @@ const withRevealControls = createHigherOrderComponent( (BlockEdit) => {
 										{ label: __('Quint', "tzm-reveal-block-controls"), value: 'quint' },
 										{ label: __('Back', "tzm-reveal-block-controls"), value: 'back' }
 									] }
-									onChange={ (newVal) => setOption('easing', newVal) }
-									__nextHasNoMarginBottom
+									onChange={ (newValue) => updateAttribute({ ...revealControls, easing: newValue }) }
 								/>
 							</PanelRow>
 							<PanelRow>
-								<RangeControl
+								<RangeControl __nextHasNoMarginBottom __next40pxDefaultSize
 									label={ __('Reveal duration (in ms)', "tzm-reveal-block-controls") }
-									value={ revealBlock?.duration || defaultRevealBlock.duration }
-									onChange={ (newVal) => setOption('duration', newVal) }
-									step={ 200 }
+									value={ revealControls?.duration || defaultRevealControls.duration }
+									onChange={ (newValue) => updateAttribute({ ...revealControls, duration: newValue }) }
+									step={ 100 }
 									min={ 100 }
-									max={ 1700 }
+									max={ 2000 }
 									marks={[
 										{value: 100},
-										{value: 500},
-										{value: 900},
-										{value: 1300},
-										{value: 1700}
+										{value: 400},
+										{value: 800},
+										{value: 1200},
+										{value: 1600},
+										{value: 2000}
 									]}
 								/>
 							</PanelRow>
 							<PanelRow>
-								<RangeControl
+								<RangeControl __nextHasNoMarginBottom __next40pxDefaultSize
 									label={ __('Reveal delay (in ms)', "tzm-reveal-block-controls") }
-									value={ revealBlock?.delay || defaultRevealBlock.delay }
-									onChange={ (newVal) => setOption('delay', newVal) }
+									value={ revealControls?.delay || defaultRevealControls.delay }
+									onChange={ (newValue) => updateAttribute({ ...revealControls, delay: newValue }) }
 									step={ 150 }
 									min={ 0 }
-									max={ 1200 }
+									max={ 3000 }
 									marks={[ 
 										{value: 0},
 										{value: 300},
 										{value: 600},
 										{value: 900},
-										{value: 1200}
+										{value: 1200},
+										{value: 1500},
+										{value: 1800},
+										{value: 2100},
+										{value: 2400},
+										{value: 2700},
+										{value: 3000}
 									]}
 								/>
 							</PanelRow>
 						</>
 						) }
-
 					</PanelBody>
 				</InspectorControls>
 			</>
@@ -230,72 +218,59 @@ const withRevealControls = createHigherOrderComponent( (BlockEdit) => {
 /**
  * Add reveal classes to the block in the editor
  */
-/*const addRevealClassesEditor = createHigherOrderComponent( (BlockListBlock) => {
+const addRevealStylingEditor = createHigherOrderComponent( (BlockListBlock) => {
 	return (props) => {
 		
 		const {
 			attributes,
-			className
+			className,
 		} = props;
 		
 		const {
-			revealBlock
+			revealControls
 		} = attributes;
-
-		function getClasses() {
-			let classes = [];
-
-			if (revealBlock && typeof revealBlock === 'object') {
-				for (const [option, value] of Object.entries(revealBlock)) {
-					if (option !== 'enabled') {
-						if (option === 'effect' && value) {
-							classes.push('tzm-reveal-' + value);
-						} 
-						else if (option === 'revealOnce' && value) {
-							classes.push('tzm-reveal-once');
-						} 
-						else if (option === 'easing' && value) {
-							classes.push('tzm-reveal-' + value);
-						}
-					}
-				}
-				// If no options are set add default class 'tzm-reveal'
-				if (revealBlock?.['enabled'] && !classes.length) classes.push('tzm-reveal');
-			}
-			classes.push('visible');
-			return classes;
+		
+		if (typeof revealControls !== 'object' || !revealControls?.['enabled']) {
+			return (
+				<BlockListBlock	{ ...props } />
+			);
 		}
 
-		function getStyles() {
-			let styles = {};
+		let revealClasses = [];
+		let revealStyles = {};
 
-			if (revealBlock && typeof revealBlock === 'object') {
-				for (const [option, value] of Object.entries(revealBlock)) {
-					if (option !== 'enabled') {
-						if (option === 'duration' && value) {
-							styles['--tzm--reveal--duration'] = value + 'ms';
-						}
-						else if (option === 'delay' && value) {
-							styles['--tzm--reveal--delay'] = value + 'ms';
-						}
-					}
-				}
+		for (const [option, value] of Object.entries(revealControls)) {
+			switch (option) {
+				case 'effect':
+					revealClasses.push('tzm-reveal__' + value);
+					break;
+				case 'permanent':
+					revealClasses.push('tzm-reveal__' + option);
+					break;
+				case 'easing':
+					revealClasses.push('tzm-reveal__ease-' + value);
+					break;
+				case 'duration':
+					revealStyles['--tzm-reveal--duration'] = value + 'ms';
+					break;
+				case 'delay':
+					revealStyles['--tzm-reveal--delay'] = value + 'ms';
+					break;
 			}
-			return styles;
-		}
 
-		let wrapperProps = props.wrapperProps || {};
-        wrapperProps.style = getStyles();
+		}
+		// If no options are set add default class 'tzm-reveal'
+		if (!revealClasses.length) revealClasses.push('tzm-reveal');
 
 		return (
 			<BlockListBlock	{ ...props } 
-				className={ classnames(className, getClasses()) }
-				wrapperProps={ wrapperProps }
+				className={ clsx(className, revealClasses) }
+				wrapperProps={ { ...props.wrapperProps, style: revealStyles } }
 			/>
 		);
 	};
-}, 'addRevealClassesEditor' );
-*/
+}, 'addRevealStylingEditor' );
+
 
 addFilter(
 	'blocks.registerBlockType',
@@ -309,8 +284,8 @@ addFilter(
 	withRevealControls
 );
 
-/*addFilter(
+addFilter(
    'editor.BlockListBlock',
-   'tzm/reveal-classes-editor',
-   addRevealClassesEditor
-);*/
+   'tzm/reveal-styling-editor',
+   addRevealStylingEditor
+);
