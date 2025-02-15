@@ -79,7 +79,8 @@ if (!class_exists('TZM_Block_Reveal_Controls')) {
                 'tzm-block-reveal-controls-editor',
                 plugins_url('/build/tzm-block-reveal-controls.js', __FILE__),
                 $editor_assets['dependencies'],
-                $editor_assets['version']
+                $editor_assets['version'],
+                true
             );
 
             // Script Translations
@@ -110,7 +111,6 @@ if (!class_exists('TZM_Block_Reveal_Controls')) {
                 wp_enqueue_script(
                     'tzm-block-reveal-controls',
                     plugins_url('/build/view-tzm-block-reveal-controls.js', __FILE__),
-                    /*is_admin() ? array('wp-editor') :*/
                     $assets['dependencies'],
                     $assets['version'],
                     true

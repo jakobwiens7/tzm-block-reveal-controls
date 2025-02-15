@@ -399,8 +399,8 @@ addFilter(
    addBlockRevealPropsEditor
 );
 
-// WIP: Add option to toggle displaying hidden blocks
+// WIP: Add option to toggle live preview
 /*registerPlugin(
-	'tzm-block-reveal-controls-live-preview', 
+	'tzm-block-reveal-live-preview', 
 	{ render: LivePreviewButton } 
 );*/
