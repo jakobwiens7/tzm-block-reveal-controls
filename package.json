@@ -1,13 +1,13 @@
 {
-	"name": "tzm-reveal-block-controls",
-	"version": "0.8.5",
-	"description": "Reveal your blocks with nice animations when they come into view.",
+	"name": "tzm-block-reveal-controls",
+	"version": "1.0.0",
+	"description": "Make your content pop! Reveal Gutenberg blocks with smooth fade, slide, and rotate animations when they scroll into view.",
 	"author": "TezmoMedia - Jakob Wiens",
 	"license": "GPL-2.0-or-later",
-	"main": "build/tzm-responsive-block-controls.js",
+	"main": "build/tzm-block-reveal-controls.js",
 	"scripts": {
-		"start": "wp-scripts start src/tzm-reveal-block-controls.js src/view-tzm-reveal-block-controls.js",
-		"build": "wp-scripts build src/tzm-reveal-block-controls.js src/view-tzm-reveal-block-controls.js",
+		"start": "wp-scripts start src/tzm-block-reveal-controls.js src/view-tzm-block-reveal-controls.js",
+		"build": "wp-scripts build src/tzm-block-reveal-controls.js src/view-tzm-block-reveal-controls.js",
 		"format": "wp-scripts format",
 		"format:src": "wp-scripts format ./src",
 		"lint:css": "wp-scripts lint-style",
@@ -19,12 +19,12 @@
 		"test:unit": "wp-scripts test-unit-js"
 	},
 	"dependencies": {
-		"@wordpress/block-editor": "^14.11.0",
-		"@wordpress/blocks": "^14.5.0",
-		"@wordpress/i18n": "^5.16.0",
+		"@wordpress/block-editor": "^14.13.0",
+		"@wordpress/blocks": "^14.7.0",
+		"@wordpress/i18n": "^5.18.0",
 		"po2json": "^0.3.0"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^30.9.0"
+		"@wordpress/scripts": "^30.11.0"
 	}
 }

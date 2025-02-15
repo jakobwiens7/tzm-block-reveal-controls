@@ -1,7 +1,7 @@
 // WordPress dependencies
 import domReady from '@wordpress/dom-ready';
 
-const tzmRevealBlockControls = {
+const tzmBlockRevealControls = {
     init: function() {
         if ( 'IntersectionObserver' in window) {
             const options = {
@@ -10,10 +10,8 @@ const tzmRevealBlockControls = {
                 threshold: 0
             }
 
-            var els = document.querySelectorAll('[class*="tzm-reveal"]');
+            var els = document.querySelectorAll('[class*="tzm-block-reveal"]');
             var io = new IntersectionObserver( this.ioCallback, options );
-
-            console.log('Block Reveal els:', els);
             
             // Start observing an element
             els.forEach(item => {
@@ -24,10 +22,9 @@ const tzmRevealBlockControls = {
         } else if ( els ) {
             console.warn('Your browser does not support IntersectionObserver.');
             els.forEach(item => {
-                item.classList.add("visible");
+                item.classList.add("is-visible");
             });
         }
-        
     },
 
     ioCallback: function(entries, observer) {
@@ -36,16 +33,16 @@ const tzmRevealBlockControls = {
             
             // Element is in viewport
             if ( entry.isIntersecting ) {
-                item.classList.add("visible");
+                item.classList.add("is-visible");
             }
             // Element is not in viewport
-            else if (!item.classList.contains('tzm-reveal__permanent')) {
-                item.classList.remove("visible");
+            else if (!item.classList.contains('tzm-block-reveal__permanent')) {
+                item.classList.remove("is-visible");
             }
         });
     },
 };
 
 domReady( function () {
-    tzmRevealBlockControls.init();
+    tzmBlockRevealControls.init();
 } );

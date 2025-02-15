@@ -1,0 +1,185 @@
+# Copyright (C) 2022 TezmoMedia - Jakob Wiens
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: TZM Block Reveal Controls 0.5.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tzm-reveal-block-"
+"controls\n"
+"Last-Translator: admin\n"
+"Language-Team: German (Formal)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-10-20T09:29:42+00:00\n"
+"PO-Revision-Date: 2025-02-14 20:48+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: tzm-block-reveal-controls\n"
+"Language: de_DE_formal\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.7.1; wp-6.7.1"
+
+#: src/tzm-block-reveal-controls_with-io-preview.js:163
+#: build/tzm-block-reveal-controls.js:222
+msgid "- Disable -"
+msgstr ""
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:171
+msgid "- Disabled -"
+msgstr "- Deaktiviert -"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:168
+#: src/tzm-block-reveal-controls_with-io-preview.js:160
+#: build/tzm-block-reveal-controls.js:219
+msgid "Animation"
+msgstr "Animation"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:211
+#: src/tzm-block-reveal-controls_with-io-preview.js:203
+#: build/tzm-block-reveal-controls.js:252
+msgid "Animation easing"
+msgstr "Animationskurve"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:219
+#: src/tzm-block-reveal-controls_with-io-preview.js:211
+#: build/tzm-block-reveal-controls.js:260
+msgid "Back"
+msgstr "Rückstoß"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:217
+#: src/tzm-block-reveal-controls_with-io-preview.js:209
+#: build/tzm-block-reveal-controls.js:258
+msgid "Cubic"
+msgstr "Kubisch"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:214
+#: src/tzm-block-reveal-controls_with-io-preview.js:206
+#: build/tzm-block-reveal-controls.js:255
+msgid "Default"
+msgstr "Standard"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:203
+#: src/tzm-block-reveal-controls_with-io-preview.js:195
+#: build/tzm-block-reveal-controls.js:245
+msgid ""
+"Enable this option to keep the block permanently visible when it has been "
+"revealed once."
+msgstr ""
+"Aktivieren Sie diese Option, damit der Block dauerhaft sichtbar bleibt, wenn "
+"er einmal aufgedeckt wurde."
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:172
+#: src/tzm-block-reveal-controls_with-io-preview.js:164
+#: build/tzm-block-reveal-controls.js:223
+msgid "Fade"
+msgstr "Einblenden"
+
+#. Author URI of the plugin
+#: tzm-block-reveal-controls.php
+msgid "https://www.tezmo.media"
+msgstr "https://www.tezmo.media"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:215
+#: src/tzm-block-reveal-controls_with-io-preview.js:207
+#: build/tzm-block-reveal-controls.js:256
+msgid "Linear"
+msgstr "Linear"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:191
+#: src/tzm-block-reveal-controls_with-io-preview.js:183
+msgid "Preview"
+msgstr "Vorschau"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:218
+#: src/tzm-block-reveal-controls_with-io-preview.js:210
+#: build/tzm-block-reveal-controls.js:259
+msgid "Quint"
+msgstr "Quint"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:246
+#: src/tzm-block-reveal-controls_with-io-preview.js:238
+#: build/tzm-block-reveal-controls.js:285
+msgid "Reveal delay (in ms)"
+msgstr "Effektverzögerung (in ms)"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:227
+#: src/tzm-block-reveal-controls_with-io-preview.js:219
+#: build/tzm-block-reveal-controls.js:267
+msgid "Reveal duration (in ms)"
+msgstr "Effektdauer (in ms)"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:162
+#: src/tzm-block-reveal-controls_with-io-preview.js:154
+#: build/tzm-block-reveal-controls.js:214
+msgid "Reveal on scroll"
+msgstr "Aufdecken beim scrollen"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:202
+#: src/tzm-block-reveal-controls_with-io-preview.js:194
+#: build/tzm-block-reveal-controls.js:244
+msgid "Reveal permanently"
+msgstr "Dauerhaft aufdecken"
+
+#. Description of the plugin
+#: tzm-block-reveal-controls.php
+msgid "Reveal your blocks with nice animations when they come into view."
+msgstr ""
+"Decken Sie Ihre Blöcke mit netten Animationen auf, sobald sie ins Sichtfeld "
+"kommen."
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:177
+#: src/tzm-block-reveal-controls_with-io-preview.js:169
+#: build/tzm-block-reveal-controls.js:228
+msgid "Rotate"
+msgstr "Drehen"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:216
+#: src/tzm-block-reveal-controls_with-io-preview.js:208
+#: build/tzm-block-reveal-controls.js:257
+msgid "Sine"
+msgstr "Sinus"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:174
+#: src/tzm-block-reveal-controls_with-io-preview.js:166
+#: build/tzm-block-reveal-controls.js:225
+msgid "Slide down"
+msgstr "Nach unten gleiten"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:175
+#: src/tzm-block-reveal-controls_with-io-preview.js:167
+#: build/tzm-block-reveal-controls.js:226
+msgid "Slide left"
+msgstr "Nach links gleiten"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:176
+#: src/tzm-block-reveal-controls_with-io-preview.js:168
+#: build/tzm-block-reveal-controls.js:227
+msgid "Slide right"
+msgstr "Nach rechts gleiten"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:173
+#: src/tzm-block-reveal-controls_with-io-preview.js:165
+#: build/tzm-block-reveal-controls.js:224
+msgid "Slide up"
+msgstr "Nach oben gleiten"
+
+#. Author of the plugin
+#: tzm-block-reveal-controls.php
+msgid "TezmoMedia - Jakob Wiens"
+msgstr "TezmoMedia - Jakob Wiens"
+
+#. Plugin Name of the plugin
+#: tzm-block-reveal-controls.php
+msgid "TZM Block Reveal Controls"
+msgstr "TZM Block Reveal Controls"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:178
+#: src/tzm-block-reveal-controls_with-io-preview.js:170
+#: build/tzm-block-reveal-controls.js:229
+msgid "Zoom in"
+msgstr "Reinzoomen"
+
+#: build/tzm-block-reveal-controls.js:1 src/tzm-block-reveal-controls.js:179
+#: src/tzm-block-reveal-controls_with-io-preview.js:171
+#: build/tzm-block-reveal-controls.js:230
+msgid "Zoom out"
+msgstr "Rauszoomen"

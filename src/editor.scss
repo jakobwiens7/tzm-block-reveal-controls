@@ -1,7 +1,12 @@
-.block-editor-block-inspector {
-    .block-editor-panel-reveal {
-        .components-panel__row .components-select-control {
-            margin-bottom: 6px;
-        }
+.block-editor-block-inspector .block-editor-panel-reveal {
+    .select-control__effect,
+    .select-control__easing {
+        margin-bottom: 6px;
+    }
+    .components-button__preview {
+        margin: 3px;
+    }
+    .toggle-control__permanent {
+        margin-bottom: 6px;
     }
 }
