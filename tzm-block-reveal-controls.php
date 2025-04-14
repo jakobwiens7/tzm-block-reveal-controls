@@ -3,7 +3,7 @@
 /**
  * Plugin Name:		TZM Block Reveal Controls
  * Description:		Reveal your blocks with nice animations when they come into view.
- * Version:			1.0.0
+ * Version:			1.0.1
  * Author:			TezmoMedia - Jakob Wiens
  * Author URI:		https://www.tezmo.media
  * License:			GPL-2.0-or-later
@@ -37,9 +37,6 @@ if (!class_exists('TZM_Block_Reveal_Controls')) {
 
         public function __construct()
         {
-            // Load plugin textdomain
-            add_action('init', array($this, 'load_textdomain'));
-
             // Render block
             add_filter('render_block', array($this, 'render_block'), 10, 2);
 
@@ -50,17 +47,6 @@ if (!class_exists('TZM_Block_Reveal_Controls')) {
             add_action('enqueue_block_assets', array($this, 'enqueue_block_assets'));
         }
 
-        /**
-         * Load plugin textdomain
-         */
-        public function load_textdomain()
-        {
-            load_plugin_textdomain(
-                'tzm-block-reveal-controls',
-                false,
-                dirname(plugin_basename(__FILE__)) . '/languages/'
-            );
-        }
 
         /**
          * Enqueue editor assets

@@ -1,8 +1,8 @@
 === TZM Block Reveal Controls ===
 Contributors:       jakobwiens
 Tags:               block controls, scroll, effect, fade, slide
-Tested up to:       6.7
-Stable tag:         1.0.0
+Tested up to:       6.8
+Stable tag:         1.0.1
 License:			GPLv2 or later
 License URI: 		https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,8 +11,7 @@ Make your content pop! Reveal any Gutenberg blocks with smooth animations when t
 
 == Description ==
 
-**TZM Block Reveal Controls** allows you to add eye-catching animations to blocks when they scroll into view.  
-Easily enhance user engagement by revealing content dynamically using smooth CSS-based effects.  
+**TZM Block Reveal Controls** allows you to add eye-catching animations to blocks when they scroll into view. Easily enhance user engagement by revealing content dynamically using smooth CSS-based effects.  
 
 === Features ===
 
@@ -59,6 +58,9 @@ This plugin is specifically designed for **Gutenberg** and may not work within t
 
 
 == Changelog ==
+
+= 1.0.1 =
+* Support WordPress 6.8
 
 = 1.0.0 =
 * Initial Release :)
