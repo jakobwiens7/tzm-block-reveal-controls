@@ -3,7 +3,7 @@
 /**
  * Plugin Name:		TZM Block Reveal Controls
  * Description:		Reveal your blocks with nice animations when they come into view.
- * Version:			1.0.1
+ * Version:			1.0.2
  * Author:			TezmoMedia - Jakob Wiens
  * Author URI:		https://www.tezmo.media
  * License:			GPL-2.0-or-later
@@ -12,6 +12,8 @@
  * Domain Path:		/languages
  * Requires at least: 6.4
  */
+
+namespace TZM\BlockRevealControls;
 
 // Exit if accessed directly.
 if (!defined('ABSPATH')) {
@@ -23,11 +25,45 @@ if (!class_exists('TZM_Block_Reveal_Controls')) {
 
     class TZM_Block_Reveal_Controls
     {
-        // The instance of this class
+
+        /**
+         * Instance of this class
+         *
+         * @var self|null
+         */
         private static $instance = null;
 
-        // Returns the instance of this class.
-        public static function get_instance()
+        /**
+         * Plugin directory path
+         *
+         * @var string
+         */
+        private $plugin_path;
+
+        /**
+         * Plugin directory URL
+         *
+         * @var string
+         */
+        private $plugin_url;
+
+        /**
+         * Constructor
+         */
+        private function __construct()
+        {
+            $this->plugin_path = plugin_dir_path(__FILE__);
+            $this->plugin_url = plugins_url('', __FILE__);
+
+            $this->init_hooks();
+        }
+
+        /**
+         * Get singleton instance
+         *
+         * @return self
+         */
+        public static function get_instance(): self
         {
             if (null === self::$instance) {
                 self::$instance = new self();
@@ -35,7 +71,12 @@ if (!class_exists('TZM_Block_Reveal_Controls')) {
             return self::$instance;
         }
 
-        public function __construct()
+        /**
+         * Initialize WordPress hooks
+         *
+         * @return void
+         */
+        private function init_hooks(): void
         {
             // Render block
             add_filter('render_block', array($this, 'render_block'), 10, 2);
@@ -53,17 +94,17 @@ if (!class_exists('TZM_Block_Reveal_Controls')) {
          */
         public function enqueue_editor_assets()
         {
-            $editor_assets = include(plugin_dir_path(__FILE__) . 'build/tzm-block-reveal-controls.asset.php');
+            $editor_assets = include($this->plugin_path . 'build/tzm-block-reveal-controls.asset.php');
 
             wp_enqueue_style(
                 'tzm-block-reveal-controls-editor',
-                plugins_url('/build/tzm-block-reveal-controls.css', __FILE__),
+                $this->plugin_url . '/build/tzm-block-reveal-controls.css',
                 array('wp-editor'),
                 $editor_assets['version']
             );
             wp_enqueue_script(
                 'tzm-block-reveal-controls-editor',
-                plugins_url('/build/tzm-block-reveal-controls.js', __FILE__),
+                $this->plugin_url . '/build/tzm-block-reveal-controls.js',
                 $editor_assets['dependencies'],
                 $editor_assets['version'],
                 true
@@ -84,11 +125,11 @@ if (!class_exists('TZM_Block_Reveal_Controls')) {
          */
         public function enqueue_block_assets()
         {
-            $assets = include(plugin_dir_path(__FILE__) . 'build/view-tzm-block-reveal-controls.asset.php');
+            $assets = include($this->plugin_path . 'build/view-tzm-block-reveal-controls.asset.php');
 
             wp_enqueue_style(
                 'tzm-block-reveal-controls',
-                plugins_url('/build/style-tzm-block-reveal-controls.css', __FILE__),
+                $this->plugin_url . '/build/style-tzm-block-reveal-controls.css',
                 is_admin() ? array('wp-editor') : null,
                 $assets['version']
             );
@@ -96,7 +137,7 @@ if (!class_exists('TZM_Block_Reveal_Controls')) {
             if (!is_admin()) {
                 wp_enqueue_script(
                     'tzm-block-reveal-controls',
-                    plugins_url('/build/view-tzm-block-reveal-controls.js', __FILE__),
+                    $this->plugin_url . '/build/view-tzm-block-reveal-controls.js',
                     $assets['dependencies'],
                     $assets['version'],
                     true
@@ -146,7 +187,7 @@ if (!class_exists('TZM_Block_Reveal_Controls')) {
             $classes = implode(' ', $classes);
             $styles = implode(';', $styles);
 
-            $html = new WP_HTML_Tag_Processor($block_content);
+            $html = new \WP_HTML_Tag_Processor($block_content);
             $html->next_tag();
 
             if ($classes) {
@@ -162,5 +203,8 @@ if (!class_exists('TZM_Block_Reveal_Controls')) {
         }
     }
 
-    TZM_Block_Reveal_Controls::get_instance();
+    // Initialize the plugin
+    add_action('plugins_loaded', function () {
+        TZM_Block_Reveal_Controls::get_instance();
+    });
 }
