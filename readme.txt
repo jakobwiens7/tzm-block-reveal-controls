@@ -2,7 +2,7 @@
 Contributors:       jakobwiens
 Tags:               block controls, scroll, effect, fade, slide
 Tested up to:       6.8
-Stable tag:         1.0.1
+Stable tag:         1.0.2
 License:			GPLv2 or later
 License URI: 		https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,9 @@ This plugin is specifically designed for **Gutenberg** and may not work within t
 
 
 == Changelog ==
+
+= 1.0.2 =
+* Fixed styles not being properly handled
 
 = 1.0.1 =
 * Support WordPress 6.8
