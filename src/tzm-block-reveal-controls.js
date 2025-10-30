@@ -124,7 +124,8 @@ const withBlockRevealControls = createHigherOrderComponent( (BlockEdit) => {
 		const {
 			attributes,
 			setAttributes,
-			clientId
+			clientId,
+			isSelected,
 		} = props;
 		
 		const {
@@ -279,6 +280,7 @@ const addBlockRevealPropsEditor = createHigherOrderComponent( (BlockListBlock) =
 			attributes,
 			className,
 			clientId,
+			//isSelected
 		} = props;
 
 		const { revealControls } = attributes;
@@ -339,10 +341,15 @@ const addBlockRevealPropsEditor = createHigherOrderComponent( (BlockListBlock) =
 			);
 		}*/
 
+		const mergedWrapperProps = { 
+			...props.wrapperProps, 
+			style: { ...props.wrapperProps?.style, ...revealStyles } 
+		}
+
 		return ( 
 			<BlockListBlock	{ ...props } 
 				className={ clsx(className, revealClasses) }
-				wrapperProps={ { ...props.wrapperProps, style: revealStyles } }
+				wrapperProps={ mergedWrapperProps }
 			/>
 		);
 	}
