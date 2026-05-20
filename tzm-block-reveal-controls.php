@@ -3,7 +3,7 @@
 /**
  * Plugin Name:		TZM Block Reveal Controls
  * Description:		Reveal your blocks with nice animations when they come into view.
- * Version:			1.0.2
+ * Version:			1.0.3
  * Author:			TezmoMedia - Jakob Wiens
  * Author URI:		https://www.tezmo.media
  * License:			GPL-2.0-or-later

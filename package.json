@@ -1,6 +1,6 @@
 {
 	"name": "tzm-block-reveal-controls",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Make your content pop! Reveal Gutenberg blocks with smooth fade, slide, and rotate animations when they scroll into view.",
 	"author": "TezmoMedia - Jakob Wiens",
 	"license": "GPL-2.0-or-later",
